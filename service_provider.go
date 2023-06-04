@@ -23,7 +23,7 @@ func (receiver *ServiceProvider) Register(app foundation.Application) {
 }
 
 func (receiver *ServiceProvider) Boot(app foundation.Application) {
-	app.Publishes("./packages/sms", map[string]string{
+	app.Publishes("github.com/goravel/example-package", map[string]string{
 		"config/sms.go": app.ConfigPath("sms.go"),
 	})
 	app.Commands([]console.Command{
