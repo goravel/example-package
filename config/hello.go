@@ -6,7 +6,7 @@ import (
 
 func init() {
 	config := facades.Config()
-	config.Add("sms", map[string]any{
-		"driver": "aws",
+	config.Add("hello", map[string]any{
+		"name": "Package",
 	})
 }

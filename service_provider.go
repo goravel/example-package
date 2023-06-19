@@ -1,4 +1,4 @@
-package sms
+package hello
 
 import (
 	"github.com/goravel/framework/contracts/console"
@@ -7,7 +7,7 @@ import (
 	"github.com/goravel/example-package/commands"
 )
 
-const Binding = "sms"
+const Binding = "hello"
 
 var App foundation.Application
 
@@ -18,15 +18,15 @@ func (receiver *ServiceProvider) Register(app foundation.Application) {
 	App = app
 
 	app.Bind(Binding, func(app foundation.Application) (any, error) {
-		return NewSms(app.MakeConfig()), nil
+		return NewHello(app.MakeConfig()), nil
 	})
 }
 
 func (receiver *ServiceProvider) Boot(app foundation.Application) {
 	app.Publishes("github.com/goravel/example-package", map[string]string{
-		"config/sms.go": app.ConfigPath("sms.go"),
+		"config/hello.go": app.ConfigPath("hello.go"),
 	})
 	app.Commands([]console.Command{
-		commands.NewSmsCommand(),
+		commands.NewHello(),
 	})
 }

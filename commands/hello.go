@@ -7,30 +7,30 @@ import (
 	"github.com/goravel/framework/contracts/console/command"
 )
 
-type SmsCommand struct{}
+type Hello struct{}
 
-func NewSmsCommand() *SmsCommand {
-	return &SmsCommand{}
+func NewHello() *Hello {
+	return &Hello{}
 }
 
 //Signature The name and signature of the console command.
-func (receiver *SmsCommand) Signature() string {
-	return "sms"
+func (receiver *Hello) Signature() string {
+	return "hello"
 }
 
 //Description The console command description.
-func (receiver *SmsCommand) Description() string {
-	return "Sms"
+func (receiver *Hello) Description() string {
+	return "Hello"
 }
 
 //Extend The console command extend.
-func (receiver *SmsCommand) Extend() command.Extend {
+func (receiver *Hello) Extend() command.Extend {
 	return command.Extend{}
 }
 
 //Handle Execute the console command.
-func (receiver *SmsCommand) Handle(ctx console.Context) error {
-	fmt.Println("Run sms command")
+func (receiver *Hello) Handle(ctx console.Context) error {
+	fmt.Println("Run Hello command")
 
 	return nil
 }
