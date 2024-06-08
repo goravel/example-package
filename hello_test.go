@@ -3,14 +3,14 @@ package hello
 import (
 	"testing"
 
-	configmocks "github.com/goravel/framework/contracts/config/mocks"
+	configmock "github.com/goravel/framework/mocks/config"
 	"github.com/stretchr/testify/suite"
 )
 
 type HelloTestSuite struct {
 	suite.Suite
 	hello      *Hello
-	mockConfig *configmocks.Config
+	mockConfig *configmock.Config
 }
 
 func TestHelloTestSuite(t *testing.T) {
@@ -18,7 +18,7 @@ func TestHelloTestSuite(t *testing.T) {
 }
 
 func (s *HelloTestSuite) SetupTest() {
-	s.mockConfig = &configmocks.Config{}
+	s.mockConfig = &configmock.Config{}
 	s.hello = NewHello(s.mockConfig)
 }
 
