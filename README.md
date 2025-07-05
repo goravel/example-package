@@ -10,35 +10,19 @@ This is a directory standard, but you can change it if you like.
 | config           | Store the config files   |
 | contracts        | Store the contract files   |
 | facades          | Store the facade files   |
-| root             | Store the service provider and package source code   |
+| setup            | Store the setup file   |
 
 ## Install
 
-1. Add package
+Run the command below in your project to install the package automatically:
 
-```
-go get -u github.com/goravel/example-package
-```
+```bash
+./artisan package:install github.com/goravel/example-package
+``` 
 
-2. Register service provider
+Or check [the setup file](./setup/setup.go) to install the package manually.
 
-```
-// config/app.go
-import examplepackage "github.com/goravel/example-package"
-
-"providers": []foundation.ServiceProvider{
-    ...
-    &examplepackage.ServiceProvider{},
-}
-```
-
-3. Publish Configuration
-
-```
-go run . artisan vendor:publish --package=github.com/goravel/example-package
-```
-
-4. Testing
+## Testing
 
 ```
 // main.go
