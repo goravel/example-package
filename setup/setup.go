@@ -1,10 +1,7 @@
 package main
 
 import (
-	"go/build"
 	"os"
-	"path/filepath"
-	"strings"
 
 	"github.com/goravel/framework/packages"
 	"github.com/goravel/framework/packages/match"
@@ -16,7 +13,7 @@ import (
 func main() {
 	// The config file will be published to the project's config directory when installing by this way.
 	// You can also publish this config file manually: ./artisan vendor:publish --package=github.com/goravel/example-package
-	config, err := GetFrameworkContent("setup/config/hello.go")
+	config, err := supportfile.GetPackageContent(packages.GetModulePath(), "setup/config/hello.go")
 	if err != nil {
 		panic(err)
 	}
@@ -35,17 +32,4 @@ func main() {
 			modify.File(path.Config("hello.go")).Remove(),
 		).
 		Execute()
-}
-
-func GetFrameworkContent(file string) (string, error) {
-	packageName := "github.com/goravel/example-package"
-	pkg, err := build.Import(packageName, "", build.FindOnly)
-	if err != nil {
-		return "", err
-	}
-
-	paths := strings.Split(file, "/")
-	paths = append([]string{pkg.Dir}, paths...)
-
-	return supportfile.GetContent(filepath.Join(paths...))
 }
