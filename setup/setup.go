@@ -14,7 +14,9 @@ import (
 )
 
 func main() {
-	config, err := GetFrameworkContent("config/hello.go")
+	// The config file will be published to the project's config directory when installing by this way.
+	// You can also publish this config file manually: ./artisan vendor:publish --package=github.com/goravel/example-package
+	config, err := GetFrameworkContent("setup/config/hello.go")
 	if err != nil {
 		panic(err)
 	}

@@ -23,9 +23,13 @@ func (receiver *ServiceProvider) Register(app foundation.Application) {
 }
 
 func (receiver *ServiceProvider) Boot(app foundation.Application) {
-	app.Publishes("github.com/goravel/example-package", map[string]string{
-		"config/hello.go": app.ConfigPath("hello.go"),
-	})
+	// The config file will be published to the project's config directory when installing by setup/setup.go.
+	// You can also publish this config file manually, uncomment the following code and run ./artisan vendor:publish --package=github.com/goravel/example-package
+
+	// app.Publishes("github.com/goravel/example-package", map[string]string{
+	// 	"config/hello.go": app.ConfigPath("hello.go"),
+	// })
+
 	app.Commands([]console.Command{
 		commands.NewHello(),
 	})
